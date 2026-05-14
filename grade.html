@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thai Max — Horários</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0a0a0a; color: #fff; font-family: 'Barlow', sans-serif; }
+
+    /* NAV */
+    .tm-nav { background: #0a0a0a; border-bottom: 1px solid #1e1e1e; padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; }
+    .tm-brand { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 3px; color: #fff; }
+    .tm-brand .r { color: #D32F2F; }
+    .tm-brand .b { color: #1A3A8F; }
+    .tm-nav-links { display: flex; gap: 20px; list-style: none; }
+    .tm-nav-links li { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #888; cursor: pointer; }
+    .tm-nav-links li.act { color: #fff; }
+    .tm-btn-cta { background: #D32F2F; color: #fff; border: none; padding: 9px 20px; font-family: 'Barlow', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 2px; cursor: pointer; }
+
+    /* PAGE HEADER */
+    .pg-header { padding: 48px 32px 36px; border-bottom: 3px solid #D32F2F; background: #0a0a0a; }
+    .pg-eyebrow { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #D32F2F; margin-bottom: 8px; }
+    .pg-title { font-family: 'Bebas Neue', sans-serif; font-size: 52px; letter-spacing: 2px; color: #fff; line-height: 1; margin-bottom: 10px; }
+    .pg-sub { font-size: 13px; color: #666; letter-spacing: 1px; }
+
+    /* SCHEDULE */
+    .sched-wrap { padding: 40px 32px 56px; background: #0a0a0a; }
+    .sched-table { width: 100%; border-collapse: collapse; }
+    .sched-table th { background: #111; border: 1px solid #1e1e1e; padding: 12px 8px; font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 2px; color: #aaa; text-align: center; }
+    .sched-table th.time-col { width: 72px; background: #0a0a0a; }
+    .sched-table th.day-header { color: #fff; }
+    .sched-table td { border: 1px solid #1e1e1e; padding: 0; vertical-align: middle; text-align: center; height: 68px; }
+    .sched-table td.time-cell { background: #D32F2F; font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1px; color: #fff; text-align: center; padding: 0 8px; }
+    .sched-table td.empty { background: #111; }
+
+    .class-slot { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px 6px; gap: 3px; }
+    .class-slot.semi { background: #1c1010; border-top: 2px solid #D32F2F; }
+    .class-slot.coletivo { background: #111; border-top: 2px solid #2a2a2a; }
+    .class-slot.feminino { background: #0e0e1a; border-top: 2px solid #1A3A8F; }
+
+    .slot-name { font-family: 'Bebas Neue', sans-serif; font-size: 12px; letter-spacing: 1px; color: #fff; }
+    .slot-type { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #666; }
+    .slot-type.semi { color: #D32F2F; }
+    .slot-type.fem { color: #6699cc; }
+
+    /* LEGEND */
+    .legend { display: flex; gap: 24px; margin-top: 28px; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #666; letter-spacing: 1.5px; text-transform: uppercase; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 1px; flex-shrink: 0; }
+    .legend-dot.semi { background: #D32F2F; }
+    .legend-dot.col { background: #444; }
+    .legend-dot.fem { background: #1A3A8F; }
+
+    /* CTA BAR */
+    .cta-bar { background: #111; border-top: 1px solid #1e1e1e; padding: 40px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .cta-text-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 1px; color: #fff; margin-bottom: 4px; }
+    .cta-text-sub { font-size: 13px; color: #666; }
+    .cta-bar-btns { display: flex; gap: 12px; flex-shrink: 0; }
+    .btn-p { background: #D32F2F; color: #fff; border: none; padding: 13px 24px; font-family: 'Barlow', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 2px; cursor: pointer; }
+    .btn-s { background: transparent; color: #fff; border: 1px solid #333; padding: 12px 24px; font-family: 'Barlow', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 2px; cursor: pointer; }
+
+    /* FOOTER */
+    .tm-footer { background: #111; border-top: 1px solid #1e1e1e; padding: 20px 32px; display: flex; align-items: center; justify-content: space-between; }
+    .tm-footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 3px; color: #fff; }
+    .tm-footer-logo span { color: #D32F2F; }
+    .tm-footer-links { display: flex; gap: 20px; }
+    .tm-footer-links a { font-size: 11px; color: #555; text-decoration: none; letter-spacing: 1px; text-transform: uppercase; }
+    .tm-footer-copy { font-size: 11px; color: #444; }
+  </style>
+</head>
+<body>
+
+  <nav class="tm-nav">
+    <div class="tm-brand"><span class="r">T</span>M<span class="b">X</span> — THAI MAX</div>
+    <ul class="tm-nav-links">
+      <li>Home</li>
+      <li>Modalidades</li>
+      <li class="act">Horários</li>
+      <li>Sobre</li>
+      <li>Contato</li>
+    </ul>
+    <button class="tm-btn-cta">Quero Treinar</button>
+  </nav>
+
+  <div class="pg-header">
+    <div class="pg-eyebrow">Quando treinar</div>
+    <div class="pg-title">GRADE DE HORÁRIOS</div>
+    <div class="pg-sub">Segunda a Sexta · Santa Maria, RS</div>
+  </div>
+
+  <div class="sched-wrap">
+    <table class="sched-table">
+      <thead>
+        <tr>
+          <th class="time-col"><i class="ti ti-clock" aria-hidden="true" style="font-size:16px;color:#666"></i></th>
+          <th class="day-header">SEG</th>
+          <th class="day-header">TER</th>
+          <th class="day-header">QUA</th>
+          <th class="day-header">QUI</th>
+          <th class="day-header">SEX</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="time-cell">07:00</td>
+          <td><div class="class-slot semi"><span class="slot-name">Muay Thai</span><span class="slot-type semi">Semi Personal</span></div></td>
+          <td class="empty"></td>
+          <td><div class="class-slot semi"><span class="slot-name">Muay Thai</span><span class="slot-type semi">Semi Personal</span></div></td>
+          <td class="empty"></td>
+          <td><div class="class-slot semi"><span class="slot-name">Muay Thai</span><span class="slot-type semi">Semi Personal</span></div></td>
+        </tr>
+        <tr>
+          <td class="time-cell">11:00</td>
+          <td class="empty"></td>
+          <td><div class="class-slot coletivo"><span class="slot-name">Muay Thai</span><span class="slot-type">Coletivo</span></div></td>
+          <td class="empty"></td>
+          <td><div class="class-slot coletivo"><span class="slot-name">Muay Thai</span><span class="slot-type">Coletivo</span></div></td>
+          <td class="empty"></td>
+        </tr>
+        <tr>
+          <td class="time-cell">16:00</td>
+          <td><div class="class-slot coletivo"><span class="slot-name">Muay Thai</span><span class="slot-type">Coletivo</span></div></td>
+          <td class="empty"></td>
+          <td><div class="class-slot coletivo"><span class="slot-name">Muay Thai</span><span class="slot-type">Coletivo</span></div></td>
+          <td class="empty"></td>
+          <td><div class="class-slot coletivo"><span class="slot-name">Muay Thai</span><span class="slot-type">Coletivo</span></div></td>
+          </tr>
+        <tr>
+          <td class="time-cell">17:00</td>
+          <td><div class="class-slot feminino"><span class="slot-name">Muay Thai</span><span class="slot-type fem">Feminino</span></div></td>
+          <td class="empty"></td>
+          <td><div class="class-slot feminino"><span class="slot-name">Muay Thai</span><span class="slot-type fem">Feminino</span></div></td>
+          <td class="empty"></td>
+          <td><div class="class-slot feminino"><span class="slot-name">Muay Thai</span><span class="slot-type fem">Feminino</span></div></td>
+        </tr>
+        <tr>
+          <td class="time-cell">18:10</td>
+          <td><div class="class-slot coletivo"><span class="slot-name">Muay Thai</span><span class="slot-type">Coletivo</span></div></td>
+          <td><div class="class-slot coletivo"><span class="slot-name">Muay Thai</span><span class="slot-type">Coletivo</span></div></td>
+          <td><div class="class-slot coletivo"><span class="slot-name">Muay Thai</span><span class="slot-type">Coletivo</span></div></td>
+          <td><div class="class-slot coletivo"><span class="slot-name">Muay Thai</span><span class="slot-type">Coletivo</span></div></td>
+          <td><div class="class-slot coletivo"><span class="slot-name">Muay Thai</span><span class="slot-type">Coletivo</span></div></td>
+        </tr>
+        <tr>
+          <td class="time-cell">19:10</td>
+          <td><div class="class-slot coletivo"><span class="slot-name">Muay Thai</span><span class="slot-type">Coletivo</span></div></td>
+          <td><div class="class-slot coletivo"><span class="slot-name">Muay Thai</span><span class="slot-type">Coletivo</span></div></td>
+          <td><div class="class-slot coletivo"><span class="slot-name">Muay Thai</span><span class="slot-type">Coletivo</span></div></td>
+          <td><div class="class-slot coletivo"><span class="slot-name">Muay Thai</span><span class="slot-type">Coletivo</span></div></td>
+          <td><div class="class-slot coletivo"><span class="slot-name">Muay Thai</span><span class="slot-type">Coletivo</span></div></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot semi"></div>Semi Personal</div>
+      <div class="legend-item"><div class="legend-dot col"></div>Coletivo</div>
+      <div class="legend-item"><div class="legend-dot fem"></div>Feminino</div>
+    </div>
+  </div>
+
+  <div class="cta-bar">
+    <div>
+      <div class="cta-text-title">PRONTO PARA COMEÇAR?</div>
+      <div class="cta-text-sub">Primeira aula experimental gratuita — sem compromisso</div>
+    </div>
+    <div class="cta-bar-btns">
+      <button class="btn-p">Agendar Aula Grátis</button>
+      <button class="btn-s">Falar no WhatsApp</button>
+    </div>
+  </div>
+
+  <footer class="tm-footer">
+    <div class="tm-footer-logo"><span>T</span>HAI MAX</div>
+    <div class="tm-footer-links">
+      <a href="#">Instagram</a>
+      <a href="#">WhatsApp</a>
+      <a href="#">Localização</a>
+    </div>
+    <div class="tm-footer-copy">© 2025 Thai Max · Escola de Muay Thai</div>
+  </footer>
+
+</body>
+</html>

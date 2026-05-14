@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thai Max — Contato</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0a0a0a; color: #fff; font-family: 'Barlow', sans-serif; }
+
+    .tm-nav { background: #0a0a0a; border-bottom: 1px solid #1e1e1e; padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; }
+    .tm-brand { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 3px; }
+    .tm-brand .r { color: #D32F2F; }
+    .tm-brand .b { color: #1A3A8F; }
+    .tm-nav-links { display: flex; gap: 20px; list-style: none; }
+    .tm-nav-links li { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #888; cursor: pointer; }
+    .tm-nav-links li.act { color: #fff; }
+    .tm-btn-cta { background: #D32F2F; color: #fff; border: none; padding: 9px 20px; font-family: 'Barlow', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 2px; cursor: pointer; }
+
+    .pg-header { padding: 48px 32px 36px; border-bottom: 3px solid #D32F2F; }
+    .pg-eyebrow { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #D32F2F; margin-bottom: 8px; }
+    .pg-title { font-family: 'Bebas Neue', sans-serif; font-size: 52px; letter-spacing: 2px; color: #fff; line-height: 1; margin-bottom: 10px; }
+    .pg-sub { font-size: 13px; color: #666; letter-spacing: 1px; }
+
+    /* MAIN LAYOUT */
+    .contact-layout { display: grid; grid-template-columns: 1fr 400px; gap: 0; min-height: 500px; }
+
+    /* FORM SIDE */
+    .form-side { padding: 48px 32px; border-right: 1px solid #1e1e1e; }
+    .form-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 1px; color: #fff; margin-bottom: 6px; }
+    .form-sub { font-size: 13px; color: #666; margin-bottom: 32px; }
+
+    .form-group { margin-bottom: 20px; }
+    .form-label { display: block; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #666; margin-bottom: 8px; }
+    .form-input {
+      width: 100%;
+      background: #111;
+      border: 1px solid #1e1e1e;
+      color: #fff;
+      padding: 12px 14px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px;
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus { border-color: #D32F2F; }
+    .form-input::placeholder { color: #444; }
+
+    .form-select {
+      width: 100%;
+      background: #111;
+      border: 1px solid #1e1e1e;
+      color: #fff;
+      padding: 12px 14px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px;
+      border-radius: 2px;
+      outline: none;
+      appearance: none;
+      cursor: pointer;
+    }
+    .form-select option { background: #111; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .form-textarea {
+      width: 100%;
+      background: #111;
+      border: 1px solid #1e1e1e;
+      color: #fff;
+      padding: 12px 14px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px;
+      border-radius: 2px;
+      outline: none;
+      resize: vertical;
+      min-height: 100px;
+    }
+    .form-textarea::placeholder { color: #444; }
+    .form-textarea:focus { border-color: #D32F2F; }
+
+    .form-note { font-size: 12px; color: #555; margin-bottom: 24px; }
+
+    .btn-submit {
+      width: 100%;
+      background: #D32F2F;
+      color: #fff;
+      border: none;
+      padding: 15px 24px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* INFO SIDE */
+    .info-side { padding: 48px 32px; background: #111; }
+    .info-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 1px; color: #fff; margin-bottom: 28px; }
+
+    .info-item { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 28px; }
+    .info-icon { width: 40px; height: 40px; background: #D32F2F11; border: 1px solid #D32F2F33; border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .info-icon i { font-size: 18px; color: #D32F2F; }
+    .info-icon.blue { background: #1A3A8F11; border-color: #1A3A8F33; }
+    .info-icon.blue i { color: #6699cc; }
+    .info-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #555; margin-bottom: 4px; }
+    .info-value { font-size: 14px; color: #fff; font-weight: 500; }
+    .info-value-sub { font-size: 12px; color: #666; margin-top: 2px; }
+
+    .divider { border: none; border-top: 1px solid #1e1e1e; margin: 24px 0; }
+
+    .social-title { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #555; margin-bottom: 14px; }
+    .social-links { display: flex; gap: 10px; }
+    .social-btn {
+      display: flex; align-items: center; gap: 8px;
+      background: #0a0a0a; border: 1px solid #1e1e1e;
+      padding: 10px 14px;
+      font-size: 12px; color: #888;
+      letter-spacing: 1px; text-transform: uppercase;
+      border-radius: 2px; text-decoration: none;
+      cursor: pointer;
+    }
+    .social-btn i { font-size: 16px; }
+    .social-btn.whats { border-color: #25D36633; color: #25D366; }
+    .social-btn.ig { border-color: #E1306C33; color: #E1306C; }
+
+    .map-placeholder {
+      margin-top: 28px;
+      background: #0a0a0a;
+      border: 1px solid #1e1e1e;
+      border-radius: 2px;
+      height: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .map-placeholder i { font-size: 28px; color: #333; }
+    .map-placeholder span { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #444; }
+
+    .tm-footer { background: #111; border-top: 1px solid #1e1e1e; padding: 20px 32px; display: flex; align-items: center; justify-content: space-between; }
+    .tm-footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 3px; color: #fff; }
+    .tm-footer-logo span { color: #D32F2F; }
+    .tm-footer-links { display: flex; gap: 20px; }
+    .tm-footer-links a { font-size: 11px; color: #555; text-decoration: none; letter-spacing: 1px; text-transform: uppercase; }
+    .tm-footer-copy { font-size: 11px; color: #444; }
+  </style>
+</head>
+<body>
+
+  <nav class="tm-nav">
+    <div class="tm-brand"><span class="r">T</span>M<span class="b">X</span> — THAI MAX</div>
+    <ul class="tm-nav-links">
+      <li>Home</li>
+      <li>Modalidades</li>
+      <li>Horários</li>
+      <li>Sobre</li>
+      <li class="act">Contato</li>
+    </ul>
+    <button class="tm-btn-cta">Quero Treinar</button>
+  </nav>
+
+  <div class="pg-header">
+    <div class="pg-eyebrow">Fale com a gente</div>
+    <div class="pg-title">CONTATO &amp; INSCRIÇÃO</div>
+    <div class="pg-sub">Primeira aula gratuita — venha conhecer a Thai Max</div>
+  </div>
+
+  <div class="contact-layout">
+    <div class="form-side">
+      <div class="form-title">QUERO TREINAR NA THAI MAX</div>
+      <div class="form-sub">Preencha o formulário e entraremos em contato para agendar sua aula experimental.</div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Nome completo</label>
+          <input class="form-input" type="text" placeholder="Seu nome" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">WhatsApp</label>
+          <input class="form-input" type="text" placeholder="(55) 9 9999-9999" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">E-mail</label>
+        <input class="form-input" type="email" placeholder="seu@email.com" />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Modalidade de interesse</label>
+          <select class="form-select">
+            <option value="">Selecione...</option>
+            <option>Muay Thai Coletivo</option>
+            <option>Muay Thai Semi Personal</option>
+            <option>Muay Thai Feminino</option>
+            <option>Ainda não sei</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Nível</label>
+          <select class="form-select">
+            <option value="">Selecione...</option>
+            <option>Iniciante — nunca treinei</option>
+            <option>Básico — já treinei um pouco</option>
+            <option>Intermediário / Avançado</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Mensagem (opcional)</label>
+        <textarea class="form-textarea" placeholder="Dúvidas, preferência de horário, ou qualquer informação que queira passar..."></textarea>
+      </div>
+
+      <p class="form-note">Entraremos em contato via WhatsApp em até 24h para confirmar sua aula experimental.</p>
+
+      <button class="btn-submit">
+        <i class="ti ti-send" aria-hidden="true"></i>
+        Enviar e Agendar Aula Grátis
+      </button>
+    </div>
+
+    <div class="info-side">
+      <div class="info-title">INFORMAÇÕES</div>
+
+      <div class="info-item">
+        <div class="info-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
+        <div>
+          <div class="info-label">Endereço</div>
+          <div class="info-value">Rua Exemplo, 000</div>
+          <div class="info-value-sub">Santa Maria — RS</div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon blue"><i class="ti ti-clock" aria-hidden="true"></i></div>
+        <div>
+          <div class="info-label">Horário de funcionamento</div>
+          <div class="info-value">Seg a Sex · 07:00 – 21:00</div>
+          <div class="info-value-sub">Sábado conforme programação</div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon"><i class="ti ti-phone" aria-hidden="true"></i></div>
+        <div>
+          <div class="info-label">WhatsApp</div>
+          <div class="info-value">(55) 9 9999-9999</div>
+          <div class="info-value-sub">Atendimento rápido via mensagem</div>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <div class="social-title">Redes sociais</div>
+      <div class="social-links">
+        <a class="social-btn whats" href="#">
+          <i class="ti ti-brand-whatsapp" aria-hidden="true"></i> WhatsApp
+        </a>
+        <a class="social-btn ig" href="#">
+          <i class="ti ti-brand-instagram" aria-hidden="true"></i> Instagram
+        </a>
+      </div>
+
+      <div class="map-placeholder">
+        <i class="ti ti-map-2" aria-hidden="true"></i>
+        <span>Mapa / Localização</span>
+      </div>
+    </div>
+  </div>
+
+  <footer class="tm-footer">
+    <div class="tm-footer-logo"><span>T</span>HAI MAX</div>
+    <div class="tm-footer-links">
+      <a href="#">Instagram</a>
+      <a href="#">WhatsApp</a>
+      <a href="#">Localização</a>
+    </div>
+    <div class="tm-footer-copy">© 2025 Thai Max · Escola de Muay Thai</div>
+  </footer>
+
+</body>
+</html>

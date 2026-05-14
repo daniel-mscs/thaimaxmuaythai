@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thai Max — Escola de Muay Thai</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0a0a;
+      color: #fff;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    /* NAV */
+    .tm-nav {
+      background: #0a0a0a;
+      border-bottom: 1px solid #1e1e1e;
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .tm-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 3px;
+      color: #fff;
+    }
+    .tm-logo span.r { color: #D32F2F; }
+    .tm-logo span.b { color: #1A3A8F; }
+    .tm-nav-links { display: flex; gap: 24px; list-style: none; }
+    .tm-nav-links li { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #888; cursor: pointer; }
+    .tm-nav-links li.act { color: #fff; }
+    .tm-btn-cta {
+      background: #D32F2F;
+      color: #fff;
+      border: none;
+      padding: 9px 20px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .tm-hero {
+      background: #0a0a0a;
+      border-bottom: 3px solid #D32F2F;
+      padding: 64px 32px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .tm-hero-left { flex: 1; }
+    .tm-hero-eyebrow {
+      display: inline-block;
+      background: #D32F2F;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      margin-bottom: 20px;
+    }
+    .tm-hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 64px;
+      line-height: 1;
+      letter-spacing: 2px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .tm-hero-title .accent-r { color: #D32F2F; }
+    .tm-hero-title .accent-b { color: #1A3A8F; }
+    .tm-hero-sub {
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 24px;
+    }
+    .tm-hero-desc {
+      font-size: 15px;
+      color: #aaa;
+      line-height: 1.7;
+      max-width: 380px;
+      margin-bottom: 32px;
+    }
+    .tm-hero-btns { display: flex; gap: 12px; align-items: center; }
+    .tm-btn-primary {
+      background: #D32F2F;
+      color: #fff;
+      border: none;
+      padding: 13px 28px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+    .tm-btn-secondary {
+      background: transparent;
+      color: #fff;
+      border: 1px solid #333;
+      padding: 12px 28px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+    .tm-hero-right { flex-shrink: 0; }
+    .tm-logo-block {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #1e1e1e;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+    }
+    .tm-logo-inner { text-align: center; }
+    .tm-logo-tmx {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 72px;
+      line-height: 1;
+      color: #fff;
+      letter-spacing: -2px;
+    }
+    .tm-logo-tmx .r { color: #D32F2F; }
+    .tm-logo-tmx .b { color: #1A3A8F; }
+    .tm-logo-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 4px;
+      color: #fff;
+      margin-top: 4px;
+    }
+    .tm-logo-tag {
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: #666;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* STATS */
+    .tm-stats {
+      background: #111;
+      border-bottom: 1px solid #1e1e1e;
+      padding: 24px 32px;
+      display: flex;
+      gap: 0;
+    }
+    .tm-stat {
+      flex: 1;
+      text-align: center;
+      padding: 0 20px;
+      border-right: 1px solid #1e1e1e;
+    }
+    .tm-stat:last-child { border-right: none; }
+    .tm-stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: #D32F2F;
+      line-height: 1;
+    }
+    .tm-stat-label {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    /* MODALIDADES */
+    .tm-modalities {
+      background: #0a0a0a;
+      padding: 56px 32px;
+      border-bottom: 1px solid #1e1e1e;
+    }
+    .tm-section-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #D32F2F;
+      margin-bottom: 8px;
+    }
+    .tm-section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: #fff;
+      letter-spacing: 1px;
+      margin-bottom: 32px;
+    }
+    .tm-mod-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .tm-mod-card {
+      background: #111;
+      border: 1px solid #1e1e1e;
+      border-top: 3px solid #D32F2F;
+      padding: 24px 20px;
+      border-radius: 2px;
+    }
+    .tm-mod-card.blue { border-top-color: #1A3A8F; }
+    .tm-mod-card.white { border-top-color: #444; }
+    .tm-mod-icon { font-size: 28px; color: #D32F2F; margin-bottom: 12px; }
+    .tm-mod-card.blue .tm-mod-icon { color: #1A3A8F; }
+    .tm-mod-card.white .tm-mod-icon { color: #888; }
+    .tm-mod-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .tm-mod-desc { font-size: 13px; color: #777; line-height: 1.6; }
+
+    /* HORÁRIOS */
+    .tm-schedule {
+      background: #111;
+      padding: 56px 32px;
+      border-bottom: 1px solid #1e1e1e;
+    }
+    .tm-sched-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .tm-day-col {
+      background: #0a0a0a;
+      border: 1px solid #1e1e1e;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .tm-day-header {
+      background: #D32F2F;
+      padding: 8px 12px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: #fff;
+    }
+    .tm-day-header.blue { background: #1A3A8F; }
+    .tm-time-slot {
+      padding: 10px 12px;
+      border-bottom: 1px solid #1a1a1a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .tm-time-slot:last-child { border-bottom: none; }
+    .tm-slot-time { font-size: 12px; color: #888; }
+    .tm-slot-class { font-size: 12px; font-weight: 600; color: #fff; }
+    .tm-slot-badge {
+      font-size: 9px;
+      padding: 2px 6px;
+      background: rgba(211,47,47,0.15);
+      color: #D32F2F;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 2px;
+    }
+    .tm-slot-badge.blue { background: rgba(26,58,143,0.2); color: #6699cc; }
+
+    /* CTA FINAL */
+    .tm-cta-section {
+      background: #0a0a0a;
+      padding: 72px 32px;
+      text-align: center;
+      border-top: 1px solid #1e1e1e;
+    }
+    .tm-cta-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      letter-spacing: 2px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .tm-cta-title .r { color: #D32F2F; }
+    .tm-cta-sub { font-size: 14px; color: #666; margin-bottom: 32px; letter-spacing: 1px; }
+    .tm-cta-btns { display: flex; justify-content: center; gap: 12px; }
+
+    /* FOOTER */
+    .tm-footer {
+      background: #111;
+      border-top: 1px solid #1e1e1e;
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .tm-footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 3px;
+      color: #fff;
+    }
+    .tm-footer-logo span { color: #D32F2F; }
+    .tm-footer-links { display: flex; gap: 20px; }
+    .tm-footer-links a { font-size: 11px; color: #555; text-decoration: none; letter-spacing: 1px; text-transform: uppercase; }
+    .tm-footer-copy { font-size: 11px; color: #444; }
+  </style>
+</head>
+<body>
+
+  <nav class="tm-nav">
+    <div class="tm-logo"><span class="r">T</span>M<span class="b">X</span> — THAI MAX</div>
+    <ul class="tm-nav-links">
+      <li class="act">Home</li>
+      <li>Modalidades</li>
+      <li>Horários</li>
+      <li>Sobre</li>
+      <li>Contato</li>
+    </ul>
+    <button class="tm-btn-cta">Quero Treinar</button>
+  </nav>
+
+  <section class="tm-hero">
+    <div class="tm-hero-left">
+      <span class="tm-hero-eyebrow">Escola de Muay Thai</span>
+      <div class="tm-hero-title">
+        DISCIPLINE<br>
+        FORGES<br>
+        <span class="accent-r">CHAM</span><span class="accent-b">PIONS</span>
+      </div>
+      <div class="tm-hero-sub">Santa Maria · Rio Grande do Sul</div>
+      <p class="tm-hero-desc">
+        Treinamento de alto nível em Muay Thai e artes marciais. Do iniciante ao competidor — aqui o limite é o que você impõe a si mesmo.
+      </p>
+      <div class="tm-hero-btns">
+        <button class="tm-btn-primary">Aula Experimental Grátis</button>
+        <button class="tm-btn-secondary">Ver Horários</button>
+      </div>
+    </div>
+    <div class="tm-hero-right">
+      <div class="tm-logo-block">
+        <div class="tm-logo-inner">
+          <div class="tm-logo-tmx"><span class="r">T</span>M<span class="b">X</span></div>
+          <div class="tm-logo-name">THAI MAX</div>
+          <div class="tm-logo-tag">Escola de Muay Thai</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="tm-stats">
+    <div class="tm-stat">
+      <div class="tm-stat-num">+10</div>
+      <div class="tm-stat-label">Anos de Academia</div>
+    </div>
+    <div class="tm-stat">
+      <div class="tm-stat-num">+200</div>
+      <div class="tm-stat-label">Alunos Formados</div>
+    </div>
+    <div class="tm-stat">
+      <div class="tm-stat-num">3</div>
+      <div class="tm-stat-label">Modalidades</div>
+    </div>
+    <div class="tm-stat">
+      <div class="tm-stat-num">6×</div>
+      <div class="tm-stat-label">Aulas por Semana</div>
+    </div>
+  </div>
+
+  <section class="tm-modalities">
+    <div class="tm-section-label">O que ensinamos</div>
+    <div class="tm-section-title">MODALIDADES</div>
+    <div class="tm-mod-grid">
+      <div class="tm-mod-card">
+        <div class="tm-mod-icon"><i class="ti ti-flame" aria-hidden="true"></i></div>
+        <div class="tm-mod-name">Muay Thai</div>
+        <div class="tm-mod-desc">A arte dos oito membros. Técnica, potência e condicionamento para todos os níveis.</div>
+      </div>
+      <div class="tm-mod-card blue">
+        <div class="tm-mod-icon"><i class="ti ti-shield" aria-hidden="true"></i></div>
+        <div class="tm-mod-name">MMA</div>
+        <div class="tm-mod-desc">Treino completo combinando striking, wrestling e ground game. Formação integral do lutador.</div>
+      </div>
+      <div class="tm-mod-card white">
+        <div class="tm-mod-icon"><i class="ti ti-run" aria-hidden="true"></i></div>
+        <div class="tm-mod-name">Condicionamento</div>
+        <div class="tm-mod-desc">Funcional e resistência voltados para performance dentro e fora do ringue.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tm-schedule">
+    <div class="tm-section-label">Quando treinar</div>
+    <div class="tm-section-title">HORÁRIOS</div>
+    <div class="tm-sched-grid">
+      <div class="tm-day-col">
+        <div class="tm-day-header">Segunda</div>
+        <div class="tm-time-slot">
+          <span class="tm-slot-time">07:00</span>
+          <div>
+            <div class="tm-slot-class">Muay Thai</div>
+            <span class="tm-slot-badge">Iniciante</span>
+          </div>
+        </div>
+        <div class="tm-time-slot">
+          <span class="tm-slot-time">19:00</span>
+          <div>
+            <div class="tm-slot-class">Muay Thai</div>
+            <span class="tm-slot-badge blue">Avançado</span>
+          </div>
+        </div>
+      </div>
+      <div class="tm-day-col">
+        <div class="tm-day-header blue">Terça</div>
+        <div class="tm-time-slot">
+          <span class="tm-slot-time">07:00</span>
+          <div>
+            <div class="tm-slot-class">MMA</div>
+            <span class="tm-slot-badge blue">Todos</span>
+          </div>
+        </div>
+        <div class="tm-time-slot">
+          <span class="tm-slot-time">19:00</span>
+          <div>
+            <div class="tm-slot-class">Condicionamento</div>
+            <span class="tm-slot-badge">Aberto</span>
+          </div>
+        </div>
+      </div>
+      <div class="tm-day-col">
+        <div class="tm-day-header">Quarta</div>
+        <div class="tm-time-slot">
+          <span class="tm-slot-time">07:00</span>
+          <div>
+            <div class="tm-slot-class">Muay Thai</div>
+            <span class="tm-slot-badge">Iniciante</span>
+          </div>
+        </div>
+        <div class="tm-time-slot">
+          <span class="tm-slot-time">19:00</span>
+          <div>
+            <div class="tm-slot-class">Muay Thai</div>
+            <span class="tm-slot-badge blue">Avançado</span>
+          </div>
+        </div>
+      </div>
+      <div class="tm-day-col">
+        <div class="tm-day-header blue">Quinta / Sex</div>
+        <div class="tm-time-slot">
+          <span class="tm-slot-time">19:00</span>
+          <div>
+            <div class="tm-slot-class">MMA</div>
+            <span class="tm-slot-badge blue">Todos</span>
+          </div>
+        </div>
+        <div class="tm-time-slot">
+          <span class="tm-slot-time">Sáb 09:00</span>
+          <div>
+            <div class="tm-slot-class">Sparring Livre</div>
+            <span class="tm-slot-badge">Convidado</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tm-cta-section">
+    <div class="tm-cta-title">COMECE <span class="r">HOJE</span></div>
+    <div class="tm-cta-sub">Primeira aula experimental gratuita — sem compromisso</div>
+    <div class="tm-cta-btns">
+      <button class="tm-btn-primary">Agendar Aula Grátis</button>
+      <button class="tm-btn-secondary">Falar no WhatsApp</button>
+    </div>
+  </section>
+
+  <footer class="tm-footer">
+    <div class="tm-footer-logo"><span>T</span>HAI MAX</div>
+    <div class="tm-footer-links">
+      <a href="#">Instagram</a>
+      <a href="#">WhatsApp</a>
+      <a href="#">Localização</a>
+    </div>
+    <div class="tm-footer-copy">© 2025 Thai Max · Escola de Muay Thai</div>
+  </footer>
+
+</body>
+</html>
