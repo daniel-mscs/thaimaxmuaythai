@@ -318,6 +318,40 @@
     .tm-footer-links { display: flex; gap: 20px; }
     .tm-footer-links a { font-size: 11px; color: #555; text-decoration: none; letter-spacing: 1px; text-transform: uppercase; }
     .tm-footer-copy { font-size: 11px; color: #444; }
+
+    @media (max-width: 768px) {
+  .tm-nav { padding: 12px 16px; }
+  .tm-nav-links { display: none; }
+
+  .tm-hero {
+    flex-direction: column;
+    padding: 40px 16px;
+    gap: 24px;
+  }
+  .tm-hero-title { font-size: 44px; }
+  .tm-hero-btns { flex-direction: column; }
+  .tm-btn-primary, .tm-btn-secondary { width: 100%; text-align: center; }
+  .tm-hero-right { display: none; }
+
+  .tm-stats {
+    flex-wrap: wrap;
+    padding: 16px;
+    gap: 0;
+  }
+  .tm-stat { flex: 1 1 50%; padding: 12px; border-right: none; border-bottom: 1px solid #1e1e1e; }
+
+  .tm-modalities { padding: 32px 16px; }
+  .tm-mod-grid { grid-template-columns: 1fr; }
+
+  .tm-schedule { padding: 32px 16px; }
+  .tm-sched-grid { grid-template-columns: 1fr 1fr; }
+
+  .tm-cta-section { padding: 48px 16px; }
+  .tm-cta-title { font-size: 36px; }
+  .tm-cta-btns { flex-direction: column; align-items: center; }
+
+  .tm-footer { flex-direction: column; align-items: center; gap: 12px; padding: 20px 16px; text-align: center; }
+}
   </style>
 </head>
 <body>
