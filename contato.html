@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #0a0a0a; color: #fff; font-family: 'Barlow', sans-serif; }
+    body { background: #0a0a0a; color: #fff; font-family: 'Barlow', sans-serif; overflow-x: hidden; }
 
     .tm-nav { background: #0a0a0a; border-bottom: 1px solid #1e1e1e; padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; }
     .tm-brand { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 3px; }
@@ -17,6 +17,7 @@
     .tm-nav-links { display: flex; gap: 20px; list-style: none; }
     .tm-nav-links li { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #888; cursor: pointer; }
     .tm-nav-links li.act { color: #fff; }
+    .tm-nav-links a { color: inherit; text-decoration: none; }
     .tm-btn-cta { background: #D32F2F; color: #fff; border: none; padding: 9px 20px; font-family: 'Barlow', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 2px; cursor: pointer; }
 
     .pg-header { padding: 48px 32px 36px; border-bottom: 3px solid #D32F2F; }
@@ -24,89 +25,26 @@
     .pg-title { font-family: 'Bebas Neue', sans-serif; font-size: 52px; letter-spacing: 2px; color: #fff; line-height: 1; margin-bottom: 10px; }
     .pg-sub { font-size: 13px; color: #666; letter-spacing: 1px; }
 
-    /* MAIN LAYOUT */
     .contact-layout { display: grid; grid-template-columns: 1fr 400px; gap: 0; min-height: 500px; }
-
-    /* FORM SIDE */
     .form-side { padding: 48px 32px; border-right: 1px solid #1e1e1e; }
     .form-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 1px; color: #fff; margin-bottom: 6px; }
     .form-sub { font-size: 13px; color: #666; margin-bottom: 32px; }
-
     .form-group { margin-bottom: 20px; }
     .form-label { display: block; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #666; margin-bottom: 8px; }
-    .form-input {
-      width: 100%;
-      background: #111;
-      border: 1px solid #1e1e1e;
-      color: #fff;
-      padding: 12px 14px;
-      font-family: 'Barlow', sans-serif;
-      font-size: 14px;
-      border-radius: 2px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
+    .form-input { width: 100%; background: #111; border: 1px solid #1e1e1e; color: #fff; padding: 12px 14px; font-family: 'Barlow', sans-serif; font-size: 14px; border-radius: 2px; outline: none; transition: border-color 0.2s; }
     .form-input:focus { border-color: #D32F2F; }
     .form-input::placeholder { color: #444; }
-
-    .form-select {
-      width: 100%;
-      background: #111;
-      border: 1px solid #1e1e1e;
-      color: #fff;
-      padding: 12px 14px;
-      font-family: 'Barlow', sans-serif;
-      font-size: 14px;
-      border-radius: 2px;
-      outline: none;
-      appearance: none;
-      cursor: pointer;
-    }
+    .form-select { width: 100%; background: #111; border: 1px solid #1e1e1e; color: #fff; padding: 12px 14px; font-family: 'Barlow', sans-serif; font-size: 14px; border-radius: 2px; outline: none; appearance: none; cursor: pointer; }
     .form-select option { background: #111; }
-
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-    .form-textarea {
-      width: 100%;
-      background: #111;
-      border: 1px solid #1e1e1e;
-      color: #fff;
-      padding: 12px 14px;
-      font-family: 'Barlow', sans-serif;
-      font-size: 14px;
-      border-radius: 2px;
-      outline: none;
-      resize: vertical;
-      min-height: 100px;
-    }
+    .form-textarea { width: 100%; background: #111; border: 1px solid #1e1e1e; color: #fff; padding: 12px 14px; font-family: 'Barlow', sans-serif; font-size: 14px; border-radius: 2px; outline: none; resize: vertical; min-height: 100px; }
     .form-textarea::placeholder { color: #444; }
     .form-textarea:focus { border-color: #D32F2F; }
-
     .form-note { font-size: 12px; color: #555; margin-bottom: 24px; }
+    .btn-submit { width: 100%; background: #D32F2F; color: #fff; border: none; padding: 15px 24px; font-family: 'Barlow', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; border-radius: 2px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
 
-    .btn-submit {
-      width: 100%;
-      background: #D32F2F;
-      color: #fff;
-      border: none;
-      padding: 15px 24px;
-      font-family: 'Barlow', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      border-radius: 2px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    /* INFO SIDE */
     .info-side { padding: 48px 32px; background: #111; }
     .info-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 1px; color: #fff; margin-bottom: 28px; }
-
     .info-item { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 28px; }
     .info-icon { width: 40px; height: 40px; background: #D32F2F11; border: 1px solid #D32F2F33; border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .info-icon i { font-size: 18px; color: #D32F2F; }
@@ -115,36 +53,14 @@
     .info-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #555; margin-bottom: 4px; }
     .info-value { font-size: 14px; color: #fff; font-weight: 500; }
     .info-value-sub { font-size: 12px; color: #666; margin-top: 2px; }
-
     .divider { border: none; border-top: 1px solid #1e1e1e; margin: 24px 0; }
-
     .social-title { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #555; margin-bottom: 14px; }
     .social-links { display: flex; gap: 10px; }
-    .social-btn {
-      display: flex; align-items: center; gap: 8px;
-      background: #0a0a0a; border: 1px solid #1e1e1e;
-      padding: 10px 14px;
-      font-size: 12px; color: #888;
-      letter-spacing: 1px; text-transform: uppercase;
-      border-radius: 2px; text-decoration: none;
-      cursor: pointer;
-    }
+    .social-btn { display: flex; align-items: center; gap: 8px; background: #0a0a0a; border: 1px solid #1e1e1e; padding: 10px 14px; font-size: 12px; color: #888; letter-spacing: 1px; text-transform: uppercase; border-radius: 2px; text-decoration: none; cursor: pointer; }
     .social-btn i { font-size: 16px; }
     .social-btn.whats { border-color: #25D36633; color: #25D366; }
     .social-btn.ig { border-color: #E1306C33; color: #E1306C; }
-
-    .map-placeholder {
-      margin-top: 28px;
-      background: #0a0a0a;
-      border: 1px solid #1e1e1e;
-      border-radius: 2px;
-      height: 140px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
+    .map-placeholder { margin-top: 28px; background: #0a0a0a; border: 1px solid #1e1e1e; border-radius: 2px; height: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
     .map-placeholder i { font-size: 28px; color: #333; }
     .map-placeholder span { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #444; }
 
@@ -154,6 +70,23 @@
     .tm-footer-links { display: flex; gap: 20px; }
     .tm-footer-links a { font-size: 11px; color: #555; text-decoration: none; letter-spacing: 1px; text-transform: uppercase; }
     .tm-footer-copy { font-size: 11px; color: #444; }
+
+    @media (max-width: 768px) {
+      .tm-nav { padding: 12px 16px; }
+      .tm-nav-links { display: none; }
+      .tm-btn-cta { font-size: 10px; padding: 8px 12px; }
+
+      .pg-header { padding: 32px 16px 24px; }
+      .pg-title { font-size: 36px; }
+
+      .contact-layout { grid-template-columns: 1fr; }
+      .form-side { padding: 32px 16px; border-right: none; border-bottom: 1px solid #1e1e1e; }
+      .info-side { padding: 32px 16px; }
+      .form-row { grid-template-columns: 1fr; }
+
+      .tm-footer { flex-direction: column; align-items: center; gap: 12px; padding: 20px 16px; text-align: center; }
+      .tm-footer-links { flex-wrap: wrap; justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -165,7 +98,7 @@
       <li><a href="modalidades.html">Modalidades</a></li>
       <li><a href="grade.html">Horários</a></li>
       <li><a href="sobre.html">Sobre</a></li>
-      <li><a href="contato.html">Contato</a></li>
+      <li class="act"><a href="contato.html">Contato</a></li>
     </ul>
     <button class="tm-btn-cta">Quero Treinar</button>
   </nav>
@@ -180,7 +113,6 @@
     <div class="form-side">
       <div class="form-title">QUERO TREINAR NA THAI MAX</div>
       <div class="form-sub">Preencha o formulário e entraremos em contato para agendar sua aula experimental.</div>
-
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Nome completo</label>
@@ -191,12 +123,10 @@
           <input class="form-input" type="text" placeholder="(55) 9 9999-9999" />
         </div>
       </div>
-
       <div class="form-group">
         <label class="form-label">E-mail</label>
         <input class="form-input" type="email" placeholder="seu@email.com" />
       </div>
-
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Modalidade de interesse</label>
@@ -218,14 +148,11 @@
           </select>
         </div>
       </div>
-
       <div class="form-group">
         <label class="form-label">Mensagem (opcional)</label>
-        <textarea class="form-textarea" placeholder="Dúvidas, preferência de horário, ou qualquer informação que queira passar..."></textarea>
+        <textarea class="form-textarea" placeholder="Dúvidas, preferência de horário..."></textarea>
       </div>
-
       <p class="form-note">Entraremos em contato via WhatsApp em até 24h para confirmar sua aula experimental.</p>
-
       <button class="btn-submit">
         <i class="ti ti-send" aria-hidden="true"></i>
         Enviar e Agendar Aula Grátis
@@ -234,7 +161,6 @@
 
     <div class="info-side">
       <div class="info-title">INFORMAÇÕES</div>
-
       <div class="info-item">
         <div class="info-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
         <div>
@@ -243,7 +169,6 @@
           <div class="info-value-sub">Santa Maria — RS</div>
         </div>
       </div>
-
       <div class="info-item">
         <div class="info-icon blue"><i class="ti ti-clock" aria-hidden="true"></i></div>
         <div>
@@ -252,7 +177,6 @@
           <div class="info-value-sub">Sábado conforme programação</div>
         </div>
       </div>
-
       <div class="info-item">
         <div class="info-icon"><i class="ti ti-phone" aria-hidden="true"></i></div>
         <div>
@@ -261,19 +185,12 @@
           <div class="info-value-sub">Atendimento rápido via mensagem</div>
         </div>
       </div>
-
       <hr class="divider" />
-
       <div class="social-title">Redes sociais</div>
       <div class="social-links">
-        <a class="social-btn whats" href="#">
-          <i class="ti ti-brand-whatsapp" aria-hidden="true"></i> WhatsApp
-        </a>
-        <a class="social-btn ig" href="#">
-          <i class="ti ti-brand-instagram" aria-hidden="true"></i> Instagram
-        </a>
+        <a class="social-btn whats" href="#"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+        <a class="social-btn ig" href="#"><i class="ti ti-brand-instagram" aria-hidden="true"></i> Instagram</a>
       </div>
-
       <div class="map-placeholder">
         <i class="ti ti-map-2" aria-hidden="true"></i>
         <span>Mapa / Localização</span>
